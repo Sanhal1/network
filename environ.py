@@ -5,7 +5,8 @@ def application(environ, start_response):
         '%s: %s' % (key, value) for key, value in sorted(environ.items())
     ]
     response_body = '\n'.join(response_body)
-    status = '200 OK'
+    response_body = response_body.encode('utf-8')
+   status = '200 OK'
     response_headers = [
         ('Content-Type', 'text/plain'),
         ('Content-Length', str(len(response_body)))
